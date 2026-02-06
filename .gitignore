@@ -1,0 +1,8 @@
+# Claude Code settings
+.claude/
+
+# Thumbnail generator (not needed on live site)
+thumbnail.html
+
+# OS files
+.DS_Store
