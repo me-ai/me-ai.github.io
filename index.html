@@ -1,1 +1,378 @@
-<!DOCTYPE html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=icon type=image/gif/png href=/public/favicon.ico><title>My Profile</title><link href=/css/app.c39c9200.css rel=preload as=style><link href=/css/chunk-vendors.92e56d25.css rel=preload as=style><link href=/js/app.06132707.js rel=preload as=script><link href=/js/chunk-vendors.68f2fc5d.js rel=preload as=script><link href=/css/chunk-vendors.92e56d25.css rel=stylesheet><link href=/css/app.c39c9200.css rel=stylesheet></head><body><noscript><strong>We're sorry but profile3 doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=app></div><script src=/js/chunk-vendors.68f2fc5d.js></script><script src=/js/app.06132707.js></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jonathan Jones - Software Engineer specializing in AI Systems, multi-agent architectures, and enterprise AI infrastructure">
+    <title>Jonathan Jones | Software Engineer, AI Systems</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a24;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --border: #2a2a3a;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header / Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .profile-image {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 40px rgba(99, 102, 241, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero .title {
+            font-size: 1.25rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero .bio {
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.05rem;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .social-link:hover {
+            border-color: var(--accent);
+            background: var(--bg-secondary);
+            transform: translateY(-2px);
+        }
+
+        .social-link svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Sections */
+        section {
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        section h2::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* What I Build Section */
+        .build-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .build-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .build-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .build-card h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .build-card h3 .icon {
+            font-size: 1.25rem;
+        }
+
+        .build-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .hero {
+                padding: 2rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .profile-image {
+                width: 120px;
+                height: 120px;
+            }
+
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .social-link {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+
+            .experience-header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <header class="hero">
+            <img src="img/profile.jpg" alt="Jonathan Jones" class="profile-image">
+            <h1>Jonathan Jones</h1>
+            <p class="title">Software Engineer, AI Systems</p>
+            <p class="bio">
+                Software Engineer specializing in production AI systems, multi-agent architectures, and enterprise AI infrastructure.
+                Expert in designing, building, and operating complete AI solutions from prototype to production under real enterprise
+                constraints: security, identity governance, compliance, and operability.
+            </p>
+            <div class="social-links">
+                <a href="https://linkedin.com/in/yourusername" class="social-link" target="_blank" rel="noopener">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    LinkedIn
+                </a>
+                <a href="https://github.com/me-ai" class="social-link" target="_blank" rel="noopener">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    GitHub
+                </a>
+                <a href="mailto:jon.jones@me-ai.tech" class="social-link">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    Email
+                </a>
+            </div>
+        </header>
+
+        <!-- Skills Section -->
+        <section>
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Cloud & Infrastructure</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">AWS (ECS, EKS, Fargate, Bedrock, SageMaker)</span>
+                        <span class="skill-tag">Azure (OpenAI, Cognitive Services, AI Search)</span>
+                        <span class="skill-tag">GCP (Vertex AI, Gemini Enterprise)</span>
+                        <span class="skill-tag">Terraform</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Kubernetes</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>AI/ML & Agents</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Multi-agent Systems</span>
+                        <span class="skill-tag">MCP Servers</span>
+                        <span class="skill-tag">OpenAI Agent SDK</span>
+                        <span class="skill-tag">Google ADK</span>
+                        <span class="skill-tag">AWS Knowledge Bases</span>
+                        <span class="skill-tag">RAG Systems</span>
+                        <span class="skill-tag">Text-to-SQL</span>
+                        <span class="skill-tag">Vector Databases</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Security & Networking</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">OAuth2/OIDC</span>
+                        <span class="skill-tag">Zero-Trust Architecture</span>
+                        <span class="skill-tag">Private VPC Design</span>
+                        <span class="skill-tag">Secrets Management</span>
+                        <span class="skill-tag">SSO Integration</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Languages & Data</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C#/.NET</span>
+                        <span class="skill-tag">JavaScript/TypeScript</span>
+                        <span class="skill-tag">Snowflake</span>
+                        <span class="skill-tag">NLP (BERT/Spacy/PyTorch)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What I Build Section -->
+        <section>
+            <h2>What I Build</h2>
+            <div class="build-grid">
+                <div class="build-card">
+                    <h3>Multi-Agent Systems</h3>
+                    <p>Production agent architectures with event-driven coordination, explicit reasoning paths, and cross-cloud orchestration using OpenAI SDK, Google ADK, and MCP servers.</p>
+                </div>
+                <div class="build-card">
+                    <h3>Adaptive Knowledge Retrieval</h3>
+                    <p>RAG systems with agent-controlled search, metadata-filtered vector retrieval, and context management for source-grounded responses across enterprise knowledge bases.</p>
+                </div>
+                <div class="build-card">
+                    <h3>AI Platform Infrastructure</h3>
+                    <p>Secure, scalable AI platforms on AWS/Azure/GCP with private networking, zero-trust architecture, and Infrastructure as Code for consistent deployments.</p>
+                </div>
+                <div class="build-card">
+                    <h3>Intelligent Automation</h3>
+                    <p>End-to-end automation agents for document processing, email triage, ticket routing, and workflow orchestration with human-in-the-loop controls.</p>
+                </div>
+                <div class="build-card">
+                    <h3>NLP & Intent Systems</h3>
+                    <p>Intent classification and entity extraction pipelines using BERT, Spacy, and LLMs for processing structured and unstructured data at scale.</p>
+                </div>
+                <div class="build-card">
+                    <h3>Text-to-SQL Solutions</h3>
+                    <p>Natural language interfaces to enterprise data warehouses, enabling non-technical users to query complex datasets through conversational AI.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Jonathan Jones. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
